@@ -6,6 +6,7 @@
 #         self.right = right
 class Solution:
     def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
+        # The below method is to making the tree into a inorder list and then printing out the ith index from the list. 
         lis = []
         def inorder(root):
             if not root:
@@ -15,4 +16,3 @@ class Solution:
             inorder(root.right)
         inorder(root)
         return lis[k-1]
-        
