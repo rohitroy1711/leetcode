@@ -17,12 +17,7 @@ class Solution:
                 return root.right
             elif not root.right:
                 return root.left
-            else:
-                # minNode = self.minval(root.right)
-                # root.val = minNode.val
-                # root.right = self.deleteNode(root.right,minNode.val)
-                # #root.right = self.deleteNode(root.right,minNode.val)
-                
+            else: 
                 curr = root.right
                 while curr.left:
                     curr = curr.left
