@@ -1,31 +1,30 @@
-class LinkedList:
-    def __init__(self,val,prev = None,next = None):
-        self.val = val
+class Listnode:
+    def __init__(self,val,prev=None,next=None):
         self.prev = prev
         self.next = next
-        
+        self.val = val
 class BrowserHistory:
 
     def __init__(self, homepage: str):
-        self.cur = LinkedList(homepage)
+        self.curr = Listnode(homepage)
+        
 
     def visit(self, url: str) -> None:
-        self.cur.next = LinkedList(url,self.cur)
-        self.cur = self.cur.next
+        self.curr.next = Listnode(url,self.curr)
+        self.curr = self.curr.next
 
     def back(self, steps: int) -> str:
-        while self.cur.prev and steps>0:
-            self.cur = self.cur.prev
-            steps -= 1
-        return self.cur.val
+        while self.curr.prev and steps>0:
+            steps-=1
+            self.curr = self.curr.prev
+        return self.curr.val
         
+
     def forward(self, steps: int) -> str:
-        while self.cur.next  and steps>0:
-            self.cur = self.cur.next
-            steps -= 1
-        return self.cur.val
-            
-        
+        while self.curr.next and steps>0:
+            steps-=1
+            self.curr = self.curr.next
+        return self.curr.val
 
 
 # Your BrowserHistory object will be instantiated and called as such:
