@@ -11,16 +11,19 @@ class Solution:
             return []
         queue = deque()
         queue.append(root)
-        anslis = []
-        while queue:
-            level_lis = []
-            level_size = len(queue)
-            for i in range(level_size):
-                temp = queue.popleft()
-                level_lis.append(temp.val)
-                if temp.left:
-                    queue.append(temp.left)
-                if temp.right:
-                    queue.append(temp.right)
-            anslis.append(level_lis[-1])
-        return anslis
+        level = 0
+        c = True
+        ans = []
+        while len(queue)>0:
+            for i in range(len(queue)):
+                j = queue.popleft()
+                if c:
+                    ans.append(j.val)
+                    c=False
+                if j.right:
+                    queue.append(j.right)
+                if j.left:
+                    queue.append(j.left)
+            level +=1
+            c=True
+        return ans
