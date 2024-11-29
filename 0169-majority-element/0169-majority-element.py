@@ -1,17 +1,15 @@
 from collections import Counter
 class Solution(object):
     def majorityElement(self, nums):
-        hashmap = Counter(nums)
-        # print(hashmap)
-        
-        threshold = len(nums)//2
-        # print(threshold)
-        ans = 0
-        for i in hashmap:
-            if hashmap[i] > threshold and hashmap[i] > ans:
-                ans = i
-            
-            # print(ans,hashmap[i])
-        return ans
+        count = 0
+        for i in nums:
+            if count == 0:
+                temp = i
+                count = 1
+            elif temp == i:
+                count +=1
+            else:
+                count-=1
+        return temp
             
         
