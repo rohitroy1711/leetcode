@@ -1,13 +1,24 @@
-class Solution:
-    def lengthOfLongestSubstring(self, s: str) -> int:
-        strset = set()
+class Solution(object):
+    def lengthOfLongestSubstring(self, s):
+        arr = list(s)
+        aset = set()
         l = 0
-        res = 0
-        for r in range(len(s)):
-            while s[r] in strset:
-                strset.remove(s[l])
-                l+=1
-            strset.add(s[r])
-            res = max(res,r-l+1)
-        return res
+        r = 0
+        length = 0
+        while r<len(arr):
+            if arr[r] not in aset:
+                aset.add(arr[r])
+                length = max((r-l+1),length)
+                r+=1
+                
+            else:
+                while arr[r] in aset:
+                    aset.remove(arr[l])
+                    l+=1
+                aset.add(arr[r])
+                length = max((r-l+1),length)
+                r+=1
+        return length
+                
+        
         
